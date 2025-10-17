@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Student Registration & Attendance System
 
 This project includes:
@@ -91,3 +92,6 @@ Use MongoDB Atlas for a managed MongoDB instance:
 - Create a database user and whitelist your server's IP or allow access from anywhere (0.0.0.0/0) for testing.
 - Use the provided connection string as `MONGO_URI`.
 
+=======
+# Academy
+>>>>>>> 1aadc023a802b3d27ffecb58e1052ef9ce58197a
