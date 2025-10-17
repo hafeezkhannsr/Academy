@@ -199,35 +199,19 @@
         </form>
     </div>
 
+    <div class="data-management">
+        <button id="downloadData" class="secondary-button">Download All Data</button>
+        <input type="file" id="importData" accept=".json" style="display: none;">
+        <button onclick="document.getElementById('importData').click()" class="secondary-button">Import Data</button>
+    </div>
+
+    <script src="js/database.js"></script>
+    <script src="js/registration.js"></script>
     <script>
-        function validateForm() {
-            // Get current timestamp for attendance
-            const timestamp = new Date().toISOString();
-            
-            // Basic form validation
-            const form = document.getElementById('registrationForm');
-            const requiredFields = form.querySelectorAll('[required]');
-            
-            let isValid = true;
-            requiredFields.forEach(field => {
-                if (!field.value.trim()) {
-                    isValid = false;
-                    field.style.borderColor = 'red';
-                } else {
-                    field.style.borderColor = '#ddd';
-                }
-            });
-
-            if (!isValid) {
-                alert('Please fill in all required fields marked with *');
-                return false;
-            }
-
-            // Here you would typically send the form data to a server
-            alert('Registration submitted successfully!');
-            // Prevent form from actually submitting for this demo
-            return false;
-        }
+        // Initialize the registration system
+        document.addEventListener('DOMContentLoaded', () => {
+            registrationForm.init();
+        });
     </script>
 </body>
 </html>

@@ -143,55 +143,13 @@
         </div>
     </div>
 
+    <script src="js/database.js"></script>
+    <script src="js/attendance.js"></script>
     <script>
-        function markAttendance() {
-            const form = document.getElementById('attendanceForm');
-            const studentId = form.studentId.value;
-            const course = form.course.value;
-            const date = form.date.value;
-
-            if (!studentId || !course || !date) {
-                alert('Please fill in all fields');
-                return false;
-            }
-
-            // In a real application, this would be saved to a database
-            // For demo purposes, we'll update the display
-            updateAttendanceRecord(studentId, course, date);
-            updateProgress();
-
-            alert('Attendance marked successfully!');
-            return false;
-        }
-
-        function updateAttendanceRecord(studentId, course, date) {
-            const record = document.getElementById('recentAttendance');
-            const entry = document.createElement('p');
-            entry.textContent = `Student ${studentId} attended ${course} on ${date}`;
-            record.insertBefore(entry, record.firstChild);
-
-            // Update attended classes
-            const attended = document.getElementById('attendedClasses');
-            const current = parseInt(attended.textContent);
-            attended.textContent = current + 1;
-        }
-
-        function updateProgress() {
-            const total = parseInt(document.getElementById('totalClasses').textContent);
-            const attended = parseInt(document.getElementById('attendedClasses').textContent);
-            const percentage = (attended / total) * 100;
-
-            document.getElementById('attendancePercentage').textContent = percentage.toFixed(1) + '%';
-            document.getElementById('progressBar').style.width = percentage + '%';
-
-            // Check if course is completed (80% attendance required)
-            if (percentage >= 80) {
-                alert('Congratulations! You have completed the course with required attendance. You are eligible for the certificate.');
-            }
-        }
-
-        // Set today's date as default
-        document.querySelector('input[type="date"]').valueAsDate = new Date();
+        // Initialize the attendance system
+        document.addEventListener('DOMContentLoaded', () => {
+            attendanceSystem.init();
+        });
     </script>
 </body>
 </html>
